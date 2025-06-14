@@ -46,7 +46,7 @@ This is a simple cloud storage web application where users can upload files (esp
 ---
 ### 1. Install Dependencies
 
-npm install
+            npm install
 
 
 ## 2. Set Up Cloudinary
