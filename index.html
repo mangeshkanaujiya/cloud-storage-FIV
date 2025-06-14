@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cloud File Upload</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h2>Upload File to Cloudinary</h2>
+  <input type="file" id="fileInput" />
+  <button onclick="upload()">Upload</button>
+  <div id="result"></div>
+
+  <script>
+    async function upload() {
+      const file = document.getElementById('fileInput').files[0];
+      const formData = new FormData();
+      formData.append('file', file);
+
+      const res = await fetch('http://localhost:5000/upload', {
+        method: 'POST',
+        body: formData
+      });
+
+      const data = await res.json();
+      document.getElementById('result').innerHTML =
+        `<p>Uploaded:</p><a href="${data.url}" target="_blank">${data.url}</a>`;
+    }
+  </script>
+</body>
+</html>
